@@ -6,9 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML 5 Apps & Game</title>
     <link rel="stylesheet" href="style.css">
-    <script src="app.js"></script>
+    <script src="app.js" defer></script>
 </head>
 <body>
+    <div class="container">
+        <button class="download">Download</button>
+        <button class="play" disabled>Play</button>
+        <button class="stop" disabled>Stop</button>
+        <progress value="0" id="progressBar" disabled></progress>
+    </div>
     
 </body>
 </html>
