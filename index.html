@@ -9,11 +9,16 @@
     <script src="app.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <button class="download">Download</button>
-        <button class="play" disabled>Play</button>
-        <button class="stop" disabled>Stop</button>
-        <progress value="0" id="progressBar" disabled></progress>
+    <div>
+        <ol id="dragStart">
+            <li draggable="true">Apple</li>
+            <li draggable="true">Mangoes</li>
+            <li draggable="true">Ananas</li>
+            <li draggable="true">Pie</li>
+        </ol>
+    </div>
+    <div id="dragEnd" class="container">
+        <ol class="dropContainer"></ol>
     </div>
     
 </body>
