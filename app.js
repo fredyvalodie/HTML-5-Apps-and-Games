@@ -8,11 +8,17 @@ window.onload = function() {
    }
 
    function dropElement(event){
-       let li = document.createElement("li");
-       let list = document.querySelector(".dropContainer");
-       let data = event.dataTransfer.getData("fruit");
-       li.innerHTML = data + " copied";
-       list.appendChild(li);
+        let li = document.createElement("li");
+        let list = document.querySelector(".dropContainer");
+        let data = event.dataTransfer.getData("fruit");
+        let data2 = event.dataTransfer.getData("text/plain");
+        if(data){
+            li.innerHTML = data + " copied";
+        }else{
+            li.innerHTML = data2 + " copied";
+        }
+        list.appendChild(li);
+       
    }
 
    dragStart.ondragstart = dragElement;
