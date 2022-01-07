@@ -1,6 +1,7 @@
 window.onload = function() {
     let dragStart = document.getElementById("dragStart");
     let dragEnd = document.getElementById("dragEnd");
+    let dragContainer = document.querySelector(".dropContainer");
     console.log("Page loaded !");
    function dragElement(event){
        event.dataTransfer.setData("fruit", event.target.textContent);
@@ -24,20 +25,31 @@ window.onload = function() {
                 list.appendChild(li_tmp);
             }
         }
-        
+
+        dragContainer.classList.remove("dragOver");
        
    }
 
    //dragStart.ondragstart = dragElement;
    dragEnd.ondragover = function(event) {
-       dragEnd.classList.add("dragOver");
+    event.stopPropagation();
+    event.preventDefault();
+    dragContainer.classList.add("dragOver");
+       return false;
+   }
+   dragEnd.ondragenter = function(event) {
+    event.stopPropagation();
+    event.preventDefault();
+    //dragContainer.classList.add("dragOver");
        return false;
    }
    dragEnd.ondragleave = function(event) {
-    dragEnd.classList.remove("dragOver");
+    event.stopPropagation();
+    event.preventDefault();
+    dragContainer.classList.remove("dragOver");
     return false;
 }
-   dragEnd.ondrop= dropElement;
+   dragEnd.ondrop = dropElement;
 
 
 
