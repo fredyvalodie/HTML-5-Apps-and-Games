@@ -16,3 +16,6 @@ li:hover {
     border: dashed 1px black;
 }
 
+.dragEnd.dragOver {
+    background-color: lightgreen;
+}
