@@ -10,10 +10,75 @@
 </head>
 <body>
     <div class="container">
-        <button class="download">Download</button>
-        <button class="play" disabled>Play</button>
-        <button class="stop" disabled>Stop</button>
-        <progress value="0" id="progressBar" disabled></progress>
+        <form action="" method="post">
+            <span class="elt">
+                <label for="rs">Raison Sociale</label>
+                <input id="rs" type="text" name="rs">
+            </span>
+            <span class="elt">
+                <label for="da">Domaine d'activité</label>
+                <select id="da" name="da">
+                    <option value="co">Commerce</option>
+                    <option value="ps">Prestation de service</option>
+                    <option value="in">Industrie</option>
+                    <option value="ong">ONG</option>
+                    <option value="fn">Foncier</option>
+                    <option value="ec">Ecoles / Formations</option>
+                </select>
+            </span>
+            <span class="elt">
+                <label for="na">Nature de l'activité</label>
+                <input id="na" name="na" type="text">
+            </span>
+            <span class="elt">
+                <label for="ac">Adresse complète</label>
+                <input id="ac" name="ac" type="text">
+            </span>
+            <span class="elt nomPrenom">
+                <span class="nom">
+                    <label for="nom">Nom</label>
+                    <input id="nom" name="nom" type="text">
+                </span>
+                <span class="prenom">
+                    <label for="prenom">prenom(s)</label>
+                    <input id="prenom" name="prenom"type="text">
+                </span>
+            </span>
+            <span class="elt telMail">
+                <span class="tel">
+                    <label for="tel">Tel</label>
+                    <input id="tel" name="tel" type="tel">
+                </span>
+                <span class="email">
+                    <label for="email">Email</label>
+                    <input id="email" name="email"type="email">
+                </span>
+            </span>
+            <span class="elt pièces">
+                <span class="pièce">
+                    <label for="pièce">Type de pièce</label>
+                    <select id="pièce" name="pièce">
+                        <option value="cni">CNI</option>
+                        <option value="passport">Passport</option>
+                        <option value="permis">Permis de conduire</option>
+                    </select>
+                </span>
+                <span class="numero">
+                    <label for="numero">N° de la pièce</label>
+                    <input id="numero" name="numero"type="text">
+                </span>
+            </span>
+            <span class="elt date_send">
+                <span class="date">
+                    <label for="date">Début d'activité</label>
+                    <input id="date" name="date" type="date">
+                </span>
+                <span class="send">
+                    <!--label for="email">Email</label-->
+                    <input id="send" name="submit"type="submit">
+                </span>
+            </span>
+        </form>
     </div>
     
 </body>

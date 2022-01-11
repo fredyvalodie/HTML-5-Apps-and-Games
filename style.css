@@ -1,3 +1,70 @@
 body{
-    background: rgb(236, 226, 226);
+    background: linear-gradient(60deg, grey, transparent);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 95vh;
+}
+
+form {
+    transform: scale(1.505);
+}
+
+span.elt {
+    display: grid;
+    grid-template-rows: 15px auto;
+    grid-gap: 6px;
+}
+
+label {
+    font-size: 13px;
+    padding: 5px;
+}
+
+input, select {
+    padding: 4px;
+    font-size: 15px;
+}
+
+.nomPrenom, .telMail, .pièces, .date_send {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    padding-bottom: 35px;
+}
+
+.nom, .prenom, .tel, .email, .pièce, .numero, .date {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 12px auto;
+    grid-gap: 8px;
+}
+
+.send {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    padding: 10px;
+}
+
+input#date {
+    height: 12px;
+}
+
+input#send {
+    border-radius: 20px;
+    width: 75%;
+    margin: auto;
+    outline: none;
+    border: none;
+    padding: 10px;
+    opacity: 0.6;
+}
+
+input#send:hover{
+    opacity: 1;
+    cursor: pointer;
 }
