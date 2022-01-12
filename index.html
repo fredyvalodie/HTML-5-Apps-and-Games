@@ -10,14 +10,14 @@
 </head>
 <body>
     <div class="container">
-        <form action="" method="post">
+        <form id="form" action="" method="post">
             <span class="elt">
                 <label for="rs">Raison Sociale</label>
-                <input id="rs" type="text" name="rs">
+                <input class="fields" id="rs" type="text" name="rs" required>
             </span>
             <span class="elt">
                 <label for="da">Domaine d'activité</label>
-                <select id="da" name="da">
+                <select class="fields" id="da" name="da" required>
                     <option value="co">Commerce</option>
                     <option value="ps">Prestation de service</option>
                     <option value="in">Industrie</option>
@@ -28,36 +28,36 @@
             </span>
             <span class="elt">
                 <label for="na">Nature de l'activité</label>
-                <input id="na" name="na" type="text">
+                <input class="fields" id="na" name="na" type="text" required>
             </span>
             <span class="elt">
                 <label for="ac">Adresse complète</label>
-                <input id="ac" name="ac" type="text">
+                <input class="fields" id="ac" name="ac" type="text" required>
             </span>
             <span class="elt nomPrenom">
                 <span class="nom">
-                    <label for="nom">Nom</label>
-                    <input id="nom" name="nom" type="text">
+                    <label for="nom">Nom - prenom(s)</label>
+                    <input class="fields" id="nom" name="nom" type="text" required>
                 </span>
                 <span class="prenom">
-                    <label for="prenom">prenom(s)</label>
-                    <input id="prenom" name="prenom"type="text">
+                    <label for="prenom">NIF</label>
+                    <input class="fields" id="prenom" name="prenom" type="text" placeholder="Neant si inexistant" value="Neant" required>
                 </span>
             </span>
             <span class="elt telMail">
                 <span class="tel">
                     <label for="tel">Tel</label>
-                    <input id="tel" name="tel" type="tel">
+                    <input class="fields" id="tel" name="tel" type="tel" required>
                 </span>
                 <span class="email">
                     <label for="email">Email</label>
-                    <input id="email" name="email"type="email">
+                    <input class="fields" id="email" name="email" type="text" placeholder="Neant si inexistant" value="Neant" required>
                 </span>
             </span>
             <span class="elt pièces">
                 <span class="pièce">
                     <label for="pièce">Type de pièce</label>
-                    <select id="pièce" name="pièce">
+                    <select class="fields" id="pièce" name="pièce" required>
                         <option value="cni">CNI</option>
                         <option value="passport">Passport</option>
                         <option value="permis">Permis de conduire</option>
@@ -65,13 +65,13 @@
                 </span>
                 <span class="numero">
                     <label for="numero">N° de la pièce</label>
-                    <input id="numero" name="numero"type="text">
+                    <input class="fields" id="numero" name="numero"type="text" required>
                 </span>
             </span>
             <span class="elt date_send">
                 <span class="date">
                     <label for="date">Début d'activité</label>
-                    <input id="date" name="date" type="date">
+                    <input class="fields" id="date" name="date" type="date" required>
                 </span>
                 <span class="send">
                     <!--label for="email">Email</label-->
