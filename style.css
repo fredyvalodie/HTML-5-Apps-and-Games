@@ -9,8 +9,13 @@ body{
     height: 95vh;
 }
 
-form {
+.inner {
     transform: scale(1.505);
+}
+
+span.buttons {
+    display: flex;
+    justify-content: space-evenly;
 }
 
 span.elt {
