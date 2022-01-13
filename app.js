@@ -107,6 +107,9 @@ function createOrOpenIndexDB() {
         // updating datas
         let updateBtn = document.querySelector(".updateBtn");
         updateBtn.onclick = updateData;
+        // getting total
+        let totalBtn = document.querySelector(".other");
+        totalBtn.onclick = totalEntries;
     };
 
     request.onsuccess = function(e) {
@@ -125,7 +128,10 @@ function createOrOpenIndexDB() {
         // updating datas
         let updateBtn = document.querySelector(".updateBtn");
         updateBtn.onclick = updateData;
-        /* adding value in the users store
+        // getting total
+        let totalBtn = document.querySelector(".other");
+        totalBtn.onclick = totalEntries;
+        /* adding value in the users store totalEntries()
         let transaction = db.transaction["users", readwrite];
         transaction.add({
             //id: 1,
@@ -259,6 +265,21 @@ function getDatas(){
     request.onerror = function(e){
         console.log("Record unloaded !");
         alert("Contribuable non enregistré.");
+    };
+}
+
+function totalEntries(){
+    console.log("Calulating Total");
+    let total = 0;
+    let usersTransaction = db.transaction(["users"], "readwrite").objectStore("users");
+    usersTransaction.openCursor().onsuccess = function(e){
+        let cursor = e.target.result;
+        if(cursor){
+            total++;
+            cursor.continue();
+        }else{
+            console.log("Total entries = " + total);
+        }
     };
 }
 
