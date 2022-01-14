@@ -160,7 +160,8 @@ function addData() {
     form.addEventListener('submit',function (event) {
         event.preventDefault();
 
-        let transaction = db.transaction(["users"], "readwrite");
+        //let transaction = db.transaction(["users"], "readwrite");
+        let transaction = db.transaction;
         let usersTransaction = transaction.objectStore("users");
         let request = usersTransaction.add({
             //id: 3,
@@ -195,7 +196,8 @@ function updateData() {
     //updateBtn.addEventListener('click', function (event) {
         //event.preventDefault();
 
-        let transaction = db.transaction(["users"], "readwrite");
+        //let transaction = db.transaction(["users"], "readwrite");
+        let transaction = db.transaction;
         let usersTransaction = transaction.objectStore("users");
         let request = usersTransaction.put({
             //id: 3,
@@ -226,7 +228,8 @@ function updateData() {
 
 
 function deleteData(){
-    let transaction = db.transaction(["users"], "readwrite");
+    //let transaction = db.transaction(["users"], "readwrite");
+    let transaction = db.transaction;
     let usersTransaction = transaction.objectStore("users");
     let delKey = document.querySelector(".delKey").value;
     let request = usersTransaction.delete(delKey);
@@ -241,7 +244,8 @@ function deleteData(){
 }
 
 function getDatas(){
-    let transaction = db.transaction(["users"], "readwrite");
+    //let transaction = db.transaction(["users"], "readwrite");
+    let transaction = db.transaction;
     let usersTransaction = transaction.objectStore("users");
     let getKey = document.querySelector(".getKey").value;
     let request = usersTransaction.get(getKey);
@@ -283,7 +287,8 @@ function totalEntries(){
     console.log("Calulating Total");
     alert("Calulating Total");
     let total = 0;
-    let usersTransaction = db.transaction(["users"], "readwrite").objectStore("users");
+    //let usersTransaction = db.transaction(["users"], "readwrite").objectStore("users");
+    let usersTransaction = db.transaction.objectStore("users");
     usersTransaction.openCursor().onsuccess = function(e){
         let cursor = e.target.result;
         if(cursor){
