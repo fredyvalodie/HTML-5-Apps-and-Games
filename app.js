@@ -71,6 +71,9 @@ window.onload = function() {
 }
 
 function createOrOpenIndexDB() {
+    if(!window.indexedDB) {
+        alert("IndexedDB is not available");
+    }
     let request = window.indexedDB.open("Données", 1);
 
     request.onupgradeneeded = function(e) {
@@ -147,7 +150,7 @@ function createOrOpenIndexDB() {
 
     request.onerror = function(e) {
         console.log("Error while loading databse");
-        alert("Error while loading databse");
+        alert("Error while loading database");
     }
 }
 

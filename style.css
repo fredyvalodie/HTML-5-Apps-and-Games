@@ -94,6 +94,11 @@ input#send:hover{
         transform: scale(0.85);
     }
 }
+@media (max-width: 380px) {
+    .inner {
+        transform: scale(0.77);
+    }
+}
 @media (max-width: 359px) {
     .inner {
         transform: scale(0.70);
