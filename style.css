@@ -73,3 +73,24 @@ input#send:hover{
     opacity: 1;
     cursor: pointer;
 }
+
+@media (max-width: 630px) {
+    .inner {
+        transform: scale(1.305);
+    }
+}
+@media (max-width: 550px) {
+    .inner {
+        transform: scale(1.015);
+    }
+}
+@media (max-width: 425px) {
+    .inner {
+        transform: scale(0.85);
+    }
+}
+@media (max-width: 359px) {
+    .inner {
+        transform: scale(0.70);
+    }
+}

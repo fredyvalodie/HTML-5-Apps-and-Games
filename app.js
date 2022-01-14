@@ -278,7 +278,7 @@ function totalEntries(){
             total++;
             cursor.continue();
         }else{
-            console.log("Total entries = " + total);
+            alert("Total entries = " + total);
         }
     };
 }
