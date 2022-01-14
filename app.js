@@ -1,5 +1,6 @@
 window.onload = function() {
     console.log("Page loaded !");
+    alert("Page laoded !");
     // creating indexDB database
     let users;
     let db = null;
@@ -74,8 +75,10 @@ function createOrOpenIndexDB() {
 
     request.onupgradeneeded = function(e) {
         console.log("Database not exist, creating...");
+        alert("Database not exist, creating...");
         db = e.target.result;
         console.log("Creating users object store");
+        alert("Creating users object store");
         users = db.createObjectStore("users", {keyPath: "numero"});
         users.createIndex("raison_sociale", "raison_sociale", {unique: true});
         users.createIndex("numero", "numero", {unique: true});
@@ -114,6 +117,7 @@ function createOrOpenIndexDB() {
 
     request.onsuccess = function(e) {
         console.log("Database successfully loaded");
+        alert("Database successfully loaded");
         db = e.target.result;
         // add new records
         addData();
@@ -143,6 +147,7 @@ function createOrOpenIndexDB() {
 
     request.onerror = function(e) {
         console.log("Error while loading databse");
+        alert("Error while loading databse");
     }
 }
 
@@ -206,11 +211,11 @@ function updateData() {
         
         request.onsuccess = function(){
             console.log("Updated !");
-            //alert("Enregistré avec succès !");
+            alert("Mis à jour avec succès !");
         };
         request.onerror = function(){
             console.log("Unupdate.");
-            //alert("Echec. Raison sociale et/ou pièce d'identité déja utilisée(s) !");
+            alert("Mise à jour échoué. Raison sociale et/ou pièce d'identité déja utilisée(s) !");
         };
         
 
@@ -224,9 +229,11 @@ function deleteData(){
     let request = usersTransaction.delete(delKey);
     request.onsuccess = function(e){
         console.log("Deleted !");
+        alert("Deleted !");
     };
     request.onerror = function(e){
         console.log("Undeleted !");
+        alert("Undeleted !");
     };
 }
 
@@ -245,6 +252,7 @@ function getDatas(){
             document.querySelector(".updateForm1").style.display = "block";
             document.querySelector(".otherForm").style.display = "none";
             console.log("Reord loaded !");
+            alert("Reord loaded !");
             //console.log(e.target.result);
             
 
@@ -270,6 +278,7 @@ function getDatas(){
 
 function totalEntries(){
     console.log("Calulating Total");
+    alert("Calulating Total");
     let total = 0;
     let usersTransaction = db.transaction(["users"], "readwrite").objectStore("users");
     usersTransaction.openCursor().onsuccess = function(e){

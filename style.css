@@ -74,6 +74,11 @@ input#send:hover{
     cursor: pointer;
 }
 
+@media (max-width: 720px) {
+    .inner {
+        transform: scale(1.20);
+    }
+}
 @media (max-width: 630px) {
     .inner {
         transform: scale(1.305);
