@@ -4,6 +4,7 @@ window.onload = function() {
     // creating indexDB database
     let users;
     let db = null;
+    //let transaction;
     let addButton = document.querySelector(".add");
     let removeButton = document.querySelector(".remove");
     let updateButton = document.querySelector(".update");
@@ -80,6 +81,7 @@ function createOrOpenIndexDB() {
         console.log("Database not exist, creating...");
         alert("Database not exist, creating...");
         db = e.target.result;
+        let trans = e.target.transaction;
         console.log("Creating users object store");
         alert("Creating users object store");
         users = db.createObjectStore("users", {keyPath: "numero"});
@@ -122,6 +124,7 @@ function createOrOpenIndexDB() {
         console.log("Database successfully loaded");
         alert("Database successfully loaded");
         db = e.target.result;
+        let trans = db.transaction(['users'], 'readwrite');
         // add new records
         addData();
         // update datas
@@ -161,8 +164,9 @@ function addData() {
         event.preventDefault();
 
         //let transaction = db.transaction(["users"], "readwrite");
-        let transaction = e.target.transaction;
-        let usersTransaction = transaction.objectStore("users");
+        //let transaction = e.target.transaction;
+        let trans = db.transaction(['users'], 'readwrite');
+        let usersTransaction = trans.objectStore("users");
         let request = usersTransaction.add({
             //id: 3,
             raison_sociale: fields[0].value,
@@ -197,8 +201,9 @@ function updateData() {
         //event.preventDefault();
 
         //let transaction = db.transaction(["users"], "readwrite");
-        let transaction = e.target.transaction;
-        let usersTransaction = transaction.objectStore("users");
+        //let transaction = e.target.transaction;
+        let trans = db.transaction(['users'], 'readwrite');
+        let usersTransaction = trans.objectStore("users");
         let request = usersTransaction.put({
             //id: 3,
             raison_sociale: document.querySelector(".updateForm1 #rs").value,
@@ -229,8 +234,9 @@ function updateData() {
 
 function deleteData(){
     //let transaction = db.transaction(["users"], "readwrite");
-    let transaction = e.target.transaction;
-    let usersTransaction = transaction.objectStore("users");
+    //let transaction = e.target.transaction;
+    let trans = db.transaction(['users'], 'readwrite');
+    let usersTransaction = trans.objectStore("users");
     let delKey = document.querySelector(".delKey").value;
     let request = usersTransaction.delete(delKey);
     request.onsuccess = function(e){
@@ -245,8 +251,9 @@ function deleteData(){
 
 function getDatas(){
     //let transaction = db.transaction(["users"], "readwrite");
-    let transaction = e.target.transaction;
-    let usersTransaction = transaction.objectStore("users");
+    //let transaction = e.target.transaction;
+    let trans = db.transaction(['users'], 'readwrite');
+    let usersTransaction = trans.objectStore("users");
     let getKey = document.querySelector(".getKey").value;
     let request = usersTransaction.get(getKey);
     request.onsuccess = function(e){
@@ -288,7 +295,8 @@ function totalEntries(){
     alert("Calulating Total");
     let total = 0;
     //let usersTransaction = db.transaction(["users"], "readwrite").objectStore("users");
-    let usersTransaction = e.target.transaction.objectStore("users");
+    let trans = db.transaction(['users'], 'readwrite');
+    let usersTransaction = trans.objectStore("users");
     usersTransaction.openCursor().onsuccess = function(e){
         let cursor = e.target.result;
         if(cursor){
