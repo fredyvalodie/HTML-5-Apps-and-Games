@@ -103,7 +103,7 @@ function createOrOpenIndexDB() {
         // add new records
         addData();
         // update datas
-        updateData();
+        //updateData();
         // delete datas
         let delButton = document.querySelector(".del");
         delButton.onclick = deleteData;
