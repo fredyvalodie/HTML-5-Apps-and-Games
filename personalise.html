@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 5 Apps & Game</title>
+    <link rel="stylesheet" href="style.css">
+    <!--script src="app.js" defer></script-->
+</head>
+<body>
+    <ul>
+        <li class="lat"></li>
+        <li class="long"></li>
+    </ul>
+    <button class="gps">Get Location</button>
+    
+    <script>
+        let btnGPS = document.querySelector(".gps");
+        
+        function getLocation()
+        {
+            if (navigator.geolocation)
+                navigator.geolocation.getCurrentPosition(showPosition);
+            else
+                console.log("Geolocation is not supported by this browser");
+        }
+        function showPosition(position)
+        {
+            let lat = document.querySelector(".lat");
+            let long = document.querySelector(".long");
+            console.log("Latitude: " + position.coords.latitude);
+            console.log("Longitude: " + position.coords.longitude); 
+            console.log(position.coords);
+        }
+        btnGPS.addEventListener("click",getLocation);
+    </script>
+</body>
+</html>

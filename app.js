@@ -1,4 +1,9 @@
 window.onload = function() {
+    /*if(navigator.onLine){
+        document.querySelector("span.buttons button.add").style.backgroundColor = "blue";
+    }else{
+        document.querySelector("span.buttons button.add").style.backgroundColor = "red";
+    }*/
     console.log("Page loaded !");
     alert("Page laoded !");
     // creating indexDB database
@@ -13,6 +18,10 @@ window.onload = function() {
     // add
     addButton.onclick = function(e){
         addForm.style.display = "block";
+        // clearing gps coords
+        document.querySelector(".lat0").value = "";
+        document.querySelector(".long0").value = "";
+        // clear done
         removeForm.style.display = "none";
         updateForm0.style.display = "none";
         updateForm1.style.display = "none";
@@ -106,9 +115,17 @@ function createOrOpenIndexDB() {
         addData();
         // update datas
         //updateData();
+        // get gps coords
+        let gpsBtn0 = document.querySelector(".getCords0");
+        let gpsBtn1 = document.querySelector(".getCords1");
+        gpsBtn0.onclick = getLocation0;
+        gpsBtn1.onclick = getLocation1;
         // delete datas
         let delButton = document.querySelector(".del");
         delButton.onclick = deleteData;
+        // delete all datas
+        let delAllButton = document.querySelector(".delAll");
+        delAllButton.onclick = deleteAllData;
         // getting datas
         let getButton = document.querySelector(".get");
         getButton.onclick = getDatas;
@@ -129,9 +146,17 @@ function createOrOpenIndexDB() {
         addData();
         // update datas
         //updateData();
+        // get gps coords
+        let gpsBtn0 = document.querySelector(".getCords0");
+        let gpsBtn1 = document.querySelector(".getCords1");
+        gpsBtn0.onclick = getLocation0;
+        gpsBtn1.onclick = getLocation1;
         // delete datas
         let delButton = document.querySelector(".del");
         delButton.onclick = deleteData;
+        // delete all datas
+        let delAllButton = document.querySelector(".delAll");
+        delAllButton.onclick = deleteAllData;
         // getting datas
         let getButton = document.querySelector(".get");
         getButton.onclick = getDatas;
@@ -173,13 +198,15 @@ function addData() {
             domaine_activité: fields[1].value,
             nature: fields[2].value,
             adresse: fields[3].value,
-            nom: fields[4].value,
-            nif: fields[5].value,
-            tel: fields[6].value,
-            email: fields[7].value,
-            type: fields[8].value,
-            numero: fields[9].value,
-            date: fields[10].value
+            lat: fields[4].value,
+            long: fields[5].value,
+            nom: fields[6].value,
+            nif: fields[7].value,
+            tel: fields[8].value,
+            email: fields[9].value,
+            type: fields[10].value,
+            numero: fields[11].value,
+            date: fields[12].value
         });
         request.onsuccess = function(){
             console.log("Success");
@@ -210,6 +237,8 @@ function updateData() {
             domaine_activité: document.querySelector(".updateForm1 #da").value,
             nature: document.querySelector(".updateForm1 #na").value,
             adresse: document.querySelector(".updateForm1 #ac").value,
+            lat: document.querySelector(".updateForm1 #lat").value,
+            long: document.querySelector(".updateForm1 #long").value,
             nom: document.querySelector(".updateForm1 #nom").value,
             nif: document.querySelector(".updateForm1 #nif").value,
             tel: document.querySelector(".updateForm1 #tel").value,
@@ -231,6 +260,35 @@ function updateData() {
 
 }
 
+function getLocation0(){
+    if (navigator.geolocation)
+        navigator.geolocation.getCurrentPosition(showPosition0);
+    else
+        alert("Vous ne disposez pas de la Géolocalisation");
+}
+
+function showPosition0(position){
+    document.querySelector(".lat0").value = position.coords.latitude;
+    document.querySelector(".long0").value = position.coords.longitude;    
+    //console.log("Latitude: " + position.coords.latitude);
+    //console.log("Longitude: " + position.coords.longitude); 
+    console.log(position.coords);
+}
+
+function getLocation1(){
+    if (navigator.geolocation)
+        navigator.geolocation.getCurrentPosition(showPosition1);
+    else
+        alert("Vous ne disposez pas de la Géolocalisation");
+}
+
+function showPosition1(position){
+    document.querySelector(".lat1").value = position.coords.latitude;
+    document.querySelector(".long1").value = position.coords.longitude;    
+    //console.log("Latitude: " + position.coords.latitude);
+    //console.log("Longitude: " + position.coords.longitude); 
+    console.log(position.coords);
+}
 
 function deleteData(){
     //let transaction = db.transaction(["users"], "readwrite");
@@ -249,6 +307,23 @@ function deleteData(){
     };
 }
 
+function deleteAllData(){
+    //let transaction = db.transaction(["users"], "readwrite");
+    //let transaction = e.target.transaction;
+    let trans = db.transaction(['users'], 'readwrite');
+    let usersTransaction = trans.objectStore("users");
+    //let delKey = document.querySelector(".delKey").value;
+    let request = usersTransaction.clear();
+    request.onsuccess = function(e){
+        console.log("Store empty !");
+        alert("Store empty !");
+    };
+    request.onerror = function(e){
+        console.log("Not empty !");
+        alert("Not empty !");
+    };
+}
+
 function getDatas(){
     //let transaction = db.transaction(["users"], "readwrite");
     //let transaction = e.target.transaction;
@@ -264,6 +339,10 @@ function getDatas(){
             document.querySelector(".removeForm").style.display = "none";
             document.querySelector(".updateForm0").style.display = "none";
             document.querySelector(".updateForm1").style.display = "block";
+            // clearing gps coords
+            document.querySelector(".lat1").value = "";
+            document.querySelector(".long1").value = "";
+            // clear done
             document.querySelector(".otherForm").style.display = "none";
             console.log("Reord loaded !");
             alert("Reord loaded !");
@@ -275,6 +354,8 @@ function getDatas(){
             document.querySelector(".updateForm1 #da").value = e.target.result.domaine_activité;
             document.querySelector(".updateForm1 #na").value = e.target.result.nature;
             document.querySelector(".updateForm1 #ac").value = e.target.result.adresse;
+            document.querySelector(".updateForm1 #lat").value = e.target.result.lat;
+            document.querySelector(".updateForm1 #long").value = e.target.result.long;
             document.querySelector(".updateForm1 #nom").value = e.target.result.nom;
             document.querySelector(".updateForm1 #date").value = e.target.result.date;
             document.querySelector(".updateForm1 #email").value = e.target.result.email;
@@ -343,3 +424,10 @@ function totalEntries(){
     }
     
 }*/
+
+// Home page settings
+let personaliseBtn = document.querySelector(".personalise");
+personaliseBtn.addEventListener("click", function(e){
+    e.preventDefault();
+    alert("Désolé.. Cette fonctionnalité est toujours en cours de développement.");
+})

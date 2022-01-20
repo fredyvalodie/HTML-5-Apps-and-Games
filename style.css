@@ -2,11 +2,28 @@ body{
     background: linear-gradient(60deg, grey, transparent);
 }
 
+.start {
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.innerStart {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+    justify-items: center;
+}
+
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 95vh;
+    height: 100vh;
 }
 
 .inner {
@@ -16,6 +33,20 @@ body{
 span.buttons {
     display: flex;
     justify-content: space-evenly;
+}
+
+span.buttons button {
+    padding: 5px;
+    margin-left: 1px;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s;
+}
+
+span.buttons button:hover{
+    transform: scale(1.07);
 }
 
 span.elt {
@@ -32,6 +63,9 @@ label {
 input, select {
     padding: 4px;
     font-size: 15px;
+    border: none;
+    outline: none;
+    border-radius: 3px;
 }
 
 .nomPrenom, .telMail, .pièces, .date_send {
@@ -41,7 +75,15 @@ input, select {
     padding-bottom: 35px;
 }
 
-.nom, .prenom, .tel, .email, .pièce, .numero, .date {
+.latLong {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: 1fr;
+    padding-bottom: 35px;
+}
+
+
+.nom, .prenom, .tel, .email, .pièce, .numero, .date, .lat, .long {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 12px auto;
@@ -53,6 +95,22 @@ input, select {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     padding: 10px;
+}
+
+.getCords {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    padding: 3px;
+}
+
+input#getCords {
+    border-radius: 7px;
+    /*width: 75%;*/
+    margin: auto;
+    padding: 5px;
+    opacity: 0.6;
+    margin-top: 25%;
 }
 
 input#date {
@@ -69,9 +127,15 @@ input#send {
     opacity: 0.6;
 }
 
-input#send:hover{
+input#send:hover, input#getCords:hover{
     opacity: 1;
     cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+    input#send, input#getCords{
+        opacity: 1;
+    }
 }
 
 @media (max-width: 720px) {
@@ -81,26 +145,36 @@ input#send:hover{
 }
 @media (max-width: 630px) {
     .inner {
-        transform: scale(1.305);
+        transform: scale(1.105);
     }
 }
 @media (max-width: 550px) {
     .inner {
-        transform: scale(1.015);
+        transform: scale(1);
+    }
+}
+@media (max-width: 500px) {
+    .inner {
+        transform: scale(0.9);
     }
 }
 @media (max-width: 425px) {
     .inner {
-        transform: scale(0.85);
+        transform: scale(0.80);
     }
 }
 @media (max-width: 380px) {
     .inner {
-        transform: scale(0.77);
+        transform: scale(0.74);
     }
 }
 @media (max-width: 359px) {
     .inner {
-        transform: scale(0.70);
+        transform: scale(0.67);
+    }
+}
+@media (max-width: 310px) {
+    .inner {
+        transform: scale(0.5);
     }
 }

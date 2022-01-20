@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" manifest="save.appcache">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 5 Apps & Game</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="inner">
+            <span class="buttons">
+                <a href="index.html"><button class="home">Home</button></a>
+                <button class="add">New</button>
+                <button class="remove">Supp un</button>
+                <button class="delAll">Supp tout</button>
+                <button class="update">Modifier</button>
+                <button class="other">Total</button>
+            </span>
+            <form class="addForm" id="form" action="" method="post" onsubmit="return false;">
+                <span class="elt">
+                    <label for="rs">Raison Sociale</label>
+                    <input class="fields" id="rs" type="text" name="rs" required>
+                </span>
+                <span class="elt">
+                    <label for="da">Domaine d'activité</label>
+                    <select class="fields" id="da" name="da" required>
+                        <option value="co">Commerce</option>
+                        <option value="ps">Prestation de service</option>
+                        <option value="in">Industrie</option>
+                        <option value="ong">ONG</option>
+                        <option value="fn">Foncier</option>
+                        <option value="ec">Ecoles / Formations</option>
+                    </select>
+                </span>
+                <span class="elt">
+                    <label for="na">Nature de l'activité</label>
+                    <input class="fields" id="na" name="na" type="text" required>
+                </span>
+                <span class="elt">
+                    <label for="ac">Adresse complète</label>
+                    <input class="fields" id="ac" name="ac" type="text" required>
+                </span>
+                <span class="elt latLong">
+                    <span class="lat">
+                        <label for="lat">Latitude</label>
+                        <input class="fields lat0" id="lat" name="lat" type="text" >
+                    </span>
+                    <span class="long">
+                        <label for="long">Longitude</label>
+                        <input class="fields long0" id="long" name="long" type="text" >
+                    </span>
+                    <span class="getCords">
+                        <!--label for="email">Email</label-->
+                        <input id="getCords" class="getCords0" name="getCords"type="submit" value="Obtenir">
+                    </span>
+                </span>
+                <span class="elt nomPrenom">
+                    <span class="nom">
+                        <label for="nom">Nom - prenom(s)</label>
+                        <input class="fields" id="nom" name="nom" type="text" required>
+                    </span>
+                    <span class="prenom">
+                        <label for="prenom">NIF</label>
+                        <input class="fields" id="prenom" name="prenom" type="text" placeholder="Neant si inexistant" value="Neant" required>
+                    </span>
+                </span>
+                <span class="elt telMail">
+                    <span class="tel">
+                        <label for="tel">Tel</label>
+                        <input class="fields" id="tel" name="tel" type="tel" required>
+                    </span>
+                    <span class="email">
+                        <label for="email">Email</label>
+                        <input class="fields" id="email" name="email" type="text" placeholder="Neant si inexistant" value="Neant" required>
+                    </span>
+                </span>
+                <span class="elt pièces">
+                    <span class="pièce">
+                        <label for="pièce">Type de pièce</label>
+                        <select class="fields" id="pièce" name="pièce" required>
+                            <option value="cni">CNI</option>
+                            <option value="passport">Passport</option>
+                            <option value="permis">Permis de conduire</option>
+                        </select>
+                    </span>
+                    <span class="numero">
+                        <label for="numero">N° de la pièce</label>
+                        <input class="fields" id="numero" name="numero"type="text" required>
+                    </span>
+                </span>
+                <span class="elt date_send">
+                    <span class="date">
+                        <label for="date">Début d'activité</label>
+                        <input class="fields" id="date" name="date" type="date" required>
+                    </span>
+                    <span class="send">
+                        <!--label for="email">Email</label-->
+                        <input id="send" name="submit"type="submit" value="Enregistrer">
+                    </span>
+                </span>
+            </form>
+            <div class="removeForm">
+                <span class="numero">
+                    <label for="numero">N° de la pièce</label>
+                    <input class="fields delKey" id="numero" name="numero" type="text" required>
+                </span>
+                <span class="send">
+                    <!--label for="email">Email</label-->
+                    <input id="send" class="del" name="submit"type="submit" value="Supprimer">
+                </span>
+            </div>
+            <div class="updateForm0">
+                <span class="numero">
+                    <label for="numero">N° de la pièce</label>
+                    <input class="fields getKey" id="numero" name="numero" type="text" required>
+                </span>
+                <span class="send">
+                    <!--label for="email">Email</label-->
+                    <input id="send" class="get" name="submit"type="submit" value="Continue">
+                </span>
+            </div>
+            <div class="updateForm1">
+                <span class="elt">
+                    <label for="rs">Raison Sociale</label>
+                    <input class="fields" id="rs" type="text" name="rs">
+                </span>
+                <span class="elt">
+                    <label for="da">Domaine d'activité</label>
+                    <select class="fields" id="da" name="da">
+                        <option value="co">Commerce</option>
+                        <option value="ps">Prestation de service</option>
+                        <option value="in">Industrie</option>
+                        <option value="ong">ONG</option>
+                        <option value="fn">Foncier</option>
+                        <option value="ec">Ecoles / Formations</option>
+                    </select>
+                </span>
+                <span class="elt">
+                    <label for="na">Nature de l'activité</label>
+                    <input class="fields" id="na" name="na" type="text">
+                </span>
+                <span class="elt">
+                    <label for="ac">Adresse complète</label>
+                    <input class="fields" id="ac" name="ac" type="text">
+                </span>
+                <span class="elt latLong">
+                    <span class="lat">
+                        <label for="lat">Latitude</label>
+                        <input class="fields lat1" id="lat" name="lat" type="text" required>
+                    </span>
+                    <span class="long">
+                        <label for="long">Longitude</label>
+                        <input class="fields long1" id="long" name="long" type="text" required>
+                    </span>
+                    <span class="getCords">
+                        <!--label for="email">Email</label-->
+                        <input id="getCords" class="getCords1" name="getCords"type="submit" value="Obtenir">
+                    </span>
+                </span>
+                <span class="elt nomPrenom">
+                    <span class="nom">
+                        <label for="nom">Nom - prenom(s)</label>
+                        <input class="fields" id="nom" name="nom" type="text">
+                    </span>
+                    <span class="prenom">
+                        <label for="prenom">NIF</label>
+                        <input class="fields" id="nif" name="prenom" type="text" placeholder="Neant si inexistant" value="Neant">
+                    </span>
+                </span>
+                <span class="elt telMail">
+                    <span class="tel">
+                        <label for="tel">Tel</label>
+                        <input class="fields" id="tel" name="tel" type="tel">
+                    </span>
+                    <span class="email">
+                        <label for="email">Email</label>
+                        <input class="fields" id="email" name="email" type="text" placeholder="Neant si inexistant" value="Neant">
+                    </span>
+                </span>
+                <span class="elt pièces">
+                    <span class="pièce">
+                        <label for="pièce">Type de pièce</label>
+                        <select class="fields" id="type" name="pièce">
+                            <option value="cni">CNI</option>
+                            <option value="passport">Passport</option>
+                            <option value="permis">Permis de conduire</option>
+                        </select>
+                    </span>
+                    <span class="numero">
+                        <label for="numero">N° de la pièce</label>
+                        <input class="fields" id="numero" name="numero"type="text">
+                    </span>
+                </span>
+                <span class="elt date_send">
+                    <span class="date">
+                        <label for="date">Début d'activité</label>
+                        <input class="fields" id="date" name="date" type="date">
+                    </span>
+                    <span class="send">
+                        <!--label for="email">Email</label-->
+                        <input id="send" class="updateBtn" name="submit"type="submit" value="Metre à jour">
+                    </span>
+                </span>
+            </div>
+            <div class="otherForm">
+                
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
