@@ -1,0 +1,11 @@
+CACHE MANIFEST
+# version 1.0
+
+CACHE:
+style.css
+app.js
+index.html
+rapide.html
+
+NETWORK: 
+export.js
