@@ -184,8 +184,10 @@ function createOrOpenIndexDB() {
 
 function addData() {
     let fields = document.querySelectorAll(".fields");
-    let form = document.querySelector('#form');
-    form.addEventListener('submit',function (event) {
+    //let form = document.querySelector('#form');
+    let saveBtn = document.querySelector('.saveBtn');
+    saveBtn.addEventListener('click',function (event) {
+        console.log("save button clicked");
         event.preventDefault();
 
         //let transaction = db.transaction(["users"], "readwrite");
@@ -261,13 +263,17 @@ function updateData() {
 }
 
 function getLocation0(){
-    if (navigator.geolocation)
+    if (navigator.geolocation){
         navigator.geolocation.getCurrentPosition(showPosition0);
-    else
+        console.log("0");
+    }
+    else{
         alert("Vous ne disposez pas de la Géolocalisation");
+    }
 }
 
 function showPosition0(position){
+    console.log("0 done");
     document.querySelector(".lat0").value = position.coords.latitude;
     document.querySelector(".long0").value = position.coords.longitude;    
     //console.log("Latitude: " + position.coords.latitude);
@@ -276,10 +282,13 @@ function showPosition0(position){
 }
 
 function getLocation1(){
-    if (navigator.geolocation)
+    if (navigator.geolocation){
         navigator.geolocation.getCurrentPosition(showPosition1);
-    else
+        console.log("1");
+    }
+    else{
         alert("Vous ne disposez pas de la Géolocalisation");
+    }
 }
 
 function showPosition1(position){

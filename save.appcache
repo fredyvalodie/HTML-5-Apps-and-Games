@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# version 1.0
+# version 1.1
 
 CACHE:
 style.css
@@ -8,4 +8,4 @@ index.html
 rapide.html
 
 NETWORK: 
-export.js
+*
