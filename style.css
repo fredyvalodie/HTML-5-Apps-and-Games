@@ -140,24 +140,24 @@ input#send:hover, input#getCords:hover{
 
 @media (max-width: 720px) {
     .inner {
-        transform: scale(1.10);
+        transform: scale(0.9);
     }
 }
-@media (max-width: 630px) {
+/*@media (max-width: 630px) {
     .inner {
-        transform: scale(1.05);
+        transform: scale(0.8);
     }
 }
 @media (max-width: 550px) {
     .inner {
-        transform: scale(1);
+        transform: scale(0.7);
     }
 }
 @media (max-width: 500px) {
     .inner {
         transform: scale(0.9);
     }
-}
+}*/
 @media (max-width: 425px) {
     .inner {
         transform: scale(0.80);
