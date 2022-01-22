@@ -1,4 +1,4 @@
-window.onload = function() {//  manifest="save.appcache"
+window.onload = function() {
     /*if(navigator.onLine){
         document.querySelector("span.buttons button.add").style.backgroundColor = "blue";
     }else{
