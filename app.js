@@ -439,4 +439,15 @@ let personaliseBtn = document.querySelector(".personalise");
 personaliseBtn.addEventListener("click", function(e){
     e.preventDefault();
     alert("Désolé.. Cette fonctionnalité est toujours en cours de développement.");
-})
+});
+
+// download results
+let resultsBtn = document.querySelector(".resultats");
+resultsBtn.addEventListener("click", function(e){
+    e.preventDefault();
+    if(navigator.onLine){
+        alert("Online.");
+    }else{
+        alert("Erreur internet. Veuillez vous connectez et réesayer.");
+    }
+});
