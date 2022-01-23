@@ -445,9 +445,7 @@ personaliseBtn.addEventListener("click", function(e){
 let resultsBtn = document.querySelector(".resultats");
 resultsBtn.addEventListener("click", function(e){
     e.preventDefault();
-    if(navigator.onLine){
-        alert("Online.");
-    }else{
+    if(!navigator.onLine){
         alert("Erreur internet. Veuillez vous connectez et réesayer.");
     }
 });

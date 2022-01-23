@@ -7,10 +7,7 @@ const urls = [
     "style.css",
     "app.js"];
 
-// opening or reating cache
-if('caches' in window) {
-    // The Cache API is supported
-    console.log("Cache supported.");
+
     
     // On écoute l'évènement install pour effectuer les actions de démarrage
     self.addEventListener("install", function(event) {
@@ -33,18 +30,22 @@ if('caches' in window) {
         caches.match(event.request)
             .then(function(response) {
             // Cache HIT, on retourne la réponse en cache.
-            if (response) {
+            /*if (response) {
                 return response;
             }
             
             // Sinon on effectue la requête réellement et on retourne son contenu.
-            return fetch(event.request);
+            return fetch(event.request);*/
+            if(navigator.online){
+              return fetch(event.request);
+            }else{
+              return response;
+            }
+            
             })
         );
     });
-}else{
-    console.log("Cache API not supported");
-}
+
 
 /*
 // On écoute l'évènement install pour effectuer les actions de démarrage
