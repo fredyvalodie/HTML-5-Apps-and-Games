@@ -37,7 +37,7 @@ function toCSV(data) {
   
 function to_csv_value(value) {
     var output = '"';
-    output += value.replace('"', '\\"');
+    output += value.toString().replace('"', '\\"');
     return output + '"';
 }
 
@@ -45,16 +45,19 @@ function to_csv_value(value) {
 // by creating a blob
 function createCSVFileFromString(string) {
     var csv_mime_type = 'text/csv';
-    return new Blob([string], {type: csv_mime_type});
+    var BOM = new Uint8Array([0xEF,0xBB,0xBF]);
+    //var b = new Blob([ BOM, "➀➁➂ Test" ]);
+    return new Blob([BOM, string], {type: csv_mime_type});
 }
 
 function downloadBlob(blob, filename) {
+    //console.log("blob " + blob);
     var anchor = document.createElement('a');
     anchor.setAttribute('download', filename);
     var url = URL.createObjectURL(blob);
     anchor.setAttribute('href', url);
     anchor.click();
-    URL.revokeObjectURL(url);
+    //URL.revokeObjectURL(url);
 }
   
 // And finally, to compose it all together
@@ -74,10 +77,25 @@ async function loadAndStartDownloadingData() {
 }
 
 // download button click
+let imgContainer = document.querySelector("#imgContainer");
+let closeBtn = document.querySelector("#closeBtn");
 let resultsButton = document.querySelector(".resultats");
 resultsButton.addEventListener("click", function(e){
     e.preventDefault();
     if(navigator.onLine){
         loadAndStartDownloadingData().catch(console.warn);
+        imgContainer.style.width = "65%";
+        imgContainer.style.height = "auto";
+    }else{
+        alert("Erreur internet. Veuillez vous connectez et réesayer.");
     }
+});
+
+// close pop-up
+
+closeBtn.addEventListener("click", function(e){
+    e.preventDefault();
+    imgContainer.style.width = "0";
+    imgContainer.style.height = "0";
+    imgContainer.style.overflow = "hidden";
 });

@@ -1,10 +1,13 @@
 // manifest="manifest.appcache"
     
 const urls = [
-    "",
+    "https://lacaza.online/test0/",
+    "instructions.png",
     "index.html",
     "rapide.html",
     "style.css",
+    "export.js",
+    "rapide.js",
     "app.js"];
 
 
@@ -30,18 +33,12 @@ const urls = [
         caches.match(event.request)
             .then(function(response) {
             // Cache HIT, on retourne la réponse en cache.
-            /*if (response) {
+            if (!navigator.online) {
                 return response;
             }
             
             // Sinon on effectue la requête réellement et on retourne son contenu.
-            return fetch(event.request);*/
-            if(navigator.online){
-              return fetch(event.request);
-            }else{
-              return response;
-            }
-            
+            return fetch(event.request);
             })
         );
     });

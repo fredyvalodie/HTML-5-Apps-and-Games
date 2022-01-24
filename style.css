@@ -2,6 +2,47 @@ body{
     background: linear-gradient(60deg, grey, transparent);
 }
 
+#imgContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    transition: all ease 0.5s;
+    max-width: 500px;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+#img {
+    width: 100%;
+}
+
+#closeBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: red;
+    color: #fff;
+    padding: 2px;
+    font-size: 1.15em;
+    font-weight: bold;
+    line-height: 0.8;
+    cursor: pointer;
+}
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    display: block;
+    background-color: #d9d9d9;
+    font-size: 14px;
+}
+
 .start {
     padding: 15px;
     border-radius: 10px;
