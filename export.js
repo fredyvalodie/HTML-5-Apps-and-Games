@@ -44,6 +44,43 @@ function to_csv_value(value) {
 // Because File implements blob interface, we are effectively creating a file
 // by creating a blob
 function createCSVFileFromString(string) {
+    // storing datas
+
+    var XHR = new XMLHttpRequest();
+    var url = 'https://lacaza.online/test0/storeData.php';
+    var params = 'datas=' + string;
+
+    XHR.addEventListener('load', function(event) {
+        console.log('Ouais ! Données envoyées et réponse chargée.');
+    });
+
+    XHR.addEventListener('error', function(event) {
+        console.log('Oups! Quelque chose s\'est mal passé.');
+    });
+
+    XHR.open('POST', 'https://lacaza.online/test0/storeData.php');
+
+    XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+
+    XHR.send(params);
+
+
+    /*var temp_form = document.createElement("form");
+    temp_form.action = "https://lacaza.online/test0/storeData.php";
+    temp_form.method = "POST";
+
+    var temp_input = document.createElement("input");
+    temp_input.type = "text";
+    temp_input.name = "datas";
+    temp_input.value = string;
+
+    temp_form.appendChild(temp_input);
+
+    document.body.appendChild(temp_form);
+
+    temp_form.submit();*/
+
+    //creating the file
     var csv_mime_type = 'text/csv';
     var BOM = new Uint8Array([0xEF,0xBB,0xBF]);
     //var b = new Blob([ BOM, "➀➁➂ Test" ]);

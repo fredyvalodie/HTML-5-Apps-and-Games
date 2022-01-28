@@ -2,6 +2,12 @@ body{
     background: linear-gradient(60deg, grey, transparent);
 }
 
+form {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
 #imgContainer {
     position: absolute;
     top: 50%;
@@ -64,7 +70,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .inner {
