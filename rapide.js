@@ -1,6 +1,7 @@
+let db;
+
 window.onload = function() {
     let users;
-    let db;
     //let transaction;
     let addButton = document.querySelector(".add");
     let removeButton = document.querySelector(".remove");
@@ -69,17 +70,70 @@ window.onload = function() {
     };
 
     // working on database
-
+    window.indexedDB.deleteDatabase("Données");
     let request = window.indexedDB.open("Données", 1);
 
     request.onupgradeneeded = function(e) {
         console.log("Database not exist, creating...");
+        db = e.target.result;
+        let trans_0 = e.target.transaction;
+        console.log("Creating users object store");
+        //alert("Creating users object store");
+        let temp_users = db.createObjectStore("users", {keyPath: "numero"});
+        temp_users.createIndex("raison_sociale", "raison_sociale", {unique: true});
+        temp_users.createIndex("numero", "numero", {unique: true});
+        // adding value in the users store
+        temp_users.add({
+            //id: 1,
+            raison_sociale: "Raison sociale",
+            domaine_activité: "Domaine d'activité",
+            nature: "Nature de l'activité",
+            adresse: "Adresse",
+            lat: "Latitude",
+            long: "Longitude",
+            nom: "Nom Prénoms",
+            nif: "NIF",
+            tel: "Tel",
+            email: "Email",
+            type: "Pièce d'identité",
+            numero: "N° de la pièce",
+            date: "Date de debut"
+        });
+
+        
+        //alert("Database successfully loaded");
+        //let trans = db.transaction(['users'], 'readwrite');
+        // add new records
+        addData();
+        // update datas
+        //updateData();
+        // get gps coords
+        let gpsBtn0 = document.querySelector(".getCords0");
+        let gpsBtn1 = document.querySelector(".getCords1");
+        gpsBtn0.onclick = getLocation0;
+        gpsBtn1.onclick = getLocation1;
+        // delete datas
+        let delButton = document.querySelector(".del");
+        delButton.onclick = deleteData;
+        // delete all datas
+        let delAllButton = document.querySelector(".delAll");
+        delAllButton.onclick = deleteAllData;
+        // getting datas
+        let getButton = document.querySelector(".get");
+        getButton.onclick = getDatas;
+        // updating datas
+        let updateBtn = document.querySelector(".updateBtn");
+        updateBtn.onclick = updateData;
+        // getting total
+        let totalBtn = document.querySelector(".other");
+        totalBtn.onclick = totalEntries;
+
     };
 
     request.onsuccess = function(e) {
         console.log("Database successfully loaded");
         //alert("Database successfully loaded");
-        let db = e.target.result;
+        /*let db = e.target.result;
         let trans = db.transaction(['users'], 'readwrite');
         // add new records
         addData();
@@ -105,7 +159,7 @@ window.onload = function() {
         // getting total
         let totalBtn = document.querySelector(".other");
         totalBtn.onclick = totalEntries;
-        /* adding value in the users store totalEntries()
+         adding value in the users store totalEntries()
         let transaction = db.transaction["users", readwrite];
         transaction.add({
             //id: 1,
@@ -118,6 +172,16 @@ window.onload = function() {
     request.onerror = function(e) {
         console.log("Error while loading databse");
     }
+
+    // back to home
+    let backToHome = document.querySelector(".home");
+    backToHome.addEventListener("click", function(e){
+        e.preventDefault();
+        let resp_0 = confirm("Cette action va stopper la session de collecte en cours et vous renvoyer sur la page d'acceuil. Voulez-vous continuer ?");
+        if(resp_0){
+            location.href = "index.html";
+        }
+    });
     
 }
 
@@ -163,6 +227,9 @@ function addData() {
             request.onsuccess = function(){
                 console.log("Success");
                 alert("Enregistré avec succès !");
+                for(let i = 0; i < fields.length; i++ ){
+                    fields[i].value = "";
+                }
             };
             request.onerror = function(){
                 console.log("Error");
@@ -178,6 +245,7 @@ function addData() {
 
 function updateData() {
     let fields = document.querySelectorAll(".fields");
+    //let db;
     //let updateBtn = document.querySelector('.update');
     //updateBtn.addEventListener('click', function (event) {
         //event.preventDefault();
@@ -218,6 +286,9 @@ function updateData() {
         request.onsuccess = function(){
             console.log("Updated !");
             alert("Mis à jour avec succès !");
+            for(let i = 0; i < fields.length; i++ ){
+                fields[i].value = "";
+            }
         };
         request.onerror = function(){
             console.log("Unupdate.");
@@ -283,6 +354,7 @@ function deleteData(){
             request.onsuccess = function(e){
                 console.log("Deleted !");
                 alert("Supprimé !");
+                document.querySelector(".delKey").value = "";
             };
             request.onerror = function(e){
                 console.log("Undeleted !");
@@ -313,6 +385,23 @@ function deleteAllData(){
             request.onsuccess = function(e){
                 console.log("Store empty !");
                 alert("Toutes les données ont été effacé !");
+                // re-create headers
+                usersTransaction.add({
+                    //id: 1,
+                    raison_sociale: "Raison sociale",
+                    domaine_activité: "Domaine d'activité",
+                    nature: "Nature de l'activité",
+                    adresse: "Adresse",
+                    lat: "Latitude",
+                    long: "Longitude",
+                    nom: "Nom Prénoms",
+                    nif: "NIF",
+                    tel: "Tel",
+                    email: "Email",
+                    type: "Pièce d'identité",
+                    numero: "N° de la pièce",
+                    date: "Date de debut"
+                });
             };
             request.onerror = function(e){
                 console.log("Not empty !");
@@ -405,6 +494,7 @@ function totalEntries(){
                     total++;
                     cursor.continue();
                 }else{
+                    total = total - 1;
                     alert("Total collectés = " + total);
                 }
             };

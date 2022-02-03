@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 5 Apps & Game</title>
+    <link rel="stylesheet" href="style.css">
+    <!--script src="app.js" defer></script-->
+</head>
+<body>
+    <div class="container">
+        <div class="inner">
+
+        </div>
+    </div>
+    Hello world !
+    <script>
+        window.onload = function(e){
+            document.querySelector(".inner").innerHTML = '<span class="elt latLong"><span class="lat"><label for="lat">Latitude</label><input class="fields lat0" id="lat" name="lat" type="text" ></span><span class="long"><label for="long">Longitude</label><input class="fields long0" id="long" name="long" type="text" ></span><span class="getCords"><input id="getCords" class="getCords0" name="getCords"type="submit" value="Obtenir"></span></span>';
+        
+            let gpsBtn0 = document.querySelector(".getCords0");
+            let gpsBtn1 = document.querySelector(".getCords1");
+            gpsBtn0.onclick = getLocation0;
+            if(gpsBtn1){
+                gpsBtn1.onclick = getLocation1;
+            }
+        };
+
+        function getLocation0(){
+            if (navigator.geolocation){
+                navigator.geolocation.getCurrentPosition(showPosition0);
+                console.log("0");
+            }
+            else{
+                alert("Vous ne disposez pas de la Géolocalisation");
+            }
+        }
+        
+        function showPosition0(position){
+            console.log("0 done");
+            document.querySelector(".lat0").value = position.coords.latitude;
+            document.querySelector(".long0").value = position.coords.longitude;    
+            //console.log("Latitude: " + position.coords.latitude);
+            //console.log("Longitude: " + position.coords.longitude); 
+            console.log(position.coords);
+        }
+        
+        /*function getLocation1(){
+            if (navigator.geolocation){
+                navigator.geolocation.getCurrentPosition(showPosition1);
+                console.log("1");
+            }
+            else{
+                alert("Vous ne disposez pas de la Géolocalisation");
+            }
+        }
+        
+        function showPosition1(position){
+            document.querySelector(".lat1").value = position.coords.latitude;
+            document.querySelector(".long1").value = position.coords.longitude;    
+            //console.log("Latitude: " + position.coords.latitude);
+            //console.log("Longitude: " + position.coords.longitude); 
+            console.log(position.coords);
+        }*/
+    </script>
+</body>
+</html>

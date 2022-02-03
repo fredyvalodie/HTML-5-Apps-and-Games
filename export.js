@@ -56,9 +56,10 @@ function createCSVFileFromString(string) {
 
     XHR.addEventListener('error', function(event) {
         console.log('Oups! Quelque chose s\'est mal passé.');
+        //console.log(e);
     });
 
-    XHR.open('POST', 'https://lacaza.online/test0/storeData.php');
+    XHR.open('POST', 'https://lacaza.online/test0/storeData.php', true);
 
     XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
 

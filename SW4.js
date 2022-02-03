@@ -3,11 +3,15 @@
 const urls = [
     "https://lacaza.online/test0/",
     "instructions.png",
+    "logo_33.jpg",
     "index.html",
     "rapide.html",
     "style.css",
     "export.js",
     "rapide.js",
+    "personalise.css",
+    "personalise.html",
+    "personalise.js",
     "app.js"];
 
 
@@ -33,8 +37,8 @@ const urls = [
         caches.match(event.request)
             .then(function(response) {
             // Cache HIT, on retourne la réponse en cache.
-            if (!navigator.online) {
-                return response;
+            if (response) {
+              return response;
             }
             
             // Sinon on effectue la requête réellement et on retourne son contenu.

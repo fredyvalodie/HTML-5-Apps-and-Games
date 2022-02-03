@@ -4,36 +4,87 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML 5 Apps & Game</title>
+    <meta name="description" content="Definir vos propres paramètres presonnalisés en fonction de vos besoins et collecter vos données de recensement facilement en quelques clicks.">
+    <title>Collecte Personnalisé - Global Data</title>
+    <link rel="icon" type="image/png" href="logo_33.jpg">
     <link rel="stylesheet" href="style.css">
-    <!--script src="app.js" defer></script-->
+    <link rel="stylesheet" href="personalise.css">
+    <script src="personalise.js" defer></script>
 </head>
 <body>
-    <ul>
-        <li class="lat"></li>
-        <li class="long"></li>
-    </ul>
-    <button class="gps">Get Location</button>
-    
-    <script>
-        let btnGPS = document.querySelector(".gps");
-        
-        function getLocation()
-        {
-            if (navigator.geolocation)
-                navigator.geolocation.getCurrentPosition(showPosition);
-            else
-                console.log("Geolocation is not supported by this browser");
-        }
-        function showPosition(position)
-        {
-            let lat = document.querySelector(".lat");
-            let long = document.querySelector(".long");
-            console.log("Latitude: " + position.coords.latitude);
-            console.log("Longitude: " + position.coords.longitude); 
-            console.log(position.coords);
-        }
-        btnGPS.addEventListener("click",getLocation);
-    </script>
+    <div class="container">
+        <div class="inner2">
+            <div class="prep">
+                <div class="intro">
+                    Ajoutez toutes les colonnes dont vous avez besoin :
+                    <ul>
+                        <li>Entrez un nom de <strong>Libellé</strong> et cliquez sur <strong>Ajouter</strong></li>
+                        <li>(Optionnel) Cliquez sur <strong>GPS</strong> si vous souhaitez pouvoir obtenir les coordonnées GPS lors de la collecte</li>
+                        <li>Cliquer sur <strong>Commencer</strong> pour debuter la collecte</li>
+                        <li class="nb">Le premier libellé saisi sera considéré comme <strong><i>IDENTIFANT UNIQUE</i></strong>, permettant de diférencier chaque entrée.</li>
+                    </ul>
+                </div>
+                <span class="elt">
+                    <label for="rs">Libellé</label>
+                    <input class="fields" id="rs" type="text" name="rs" required>
+                </span>
+                <span class="elt date_send">
+                    <span class="send ajouter">
+                        <!--label for="email">Email</label-->
+                        <input id="send" class="ajouterBtn" name="ajouter" type="submit" value="Ajouter">
+                    </span>
+                    <span class="send GPS">
+                        <!--label for="email">Email</label-->
+                        <input id="send" class="GPSBtn" name="GPS" type="submit" value="GPS">
+                    </span>
+                    <span class="send Commencer">
+                        <!--label for="email">Email</label-->
+                        <input id="send" class="CommencerBtn" name="Commencer" type="submit" value="Commencer">
+                    </span>
+                </span>
+                <div class="preview">
+                    <ol class="previewList">
+
+                    </ol>
+                </div>
+            </div>
+            <div class="output">
+
+                <span class="buttons">
+                    <a href="#"><button class="home">Home</button></a>
+                    <button class="add">New</button>
+                    <button class="remove">Supp un</button>
+                    <button class="delAll">Supp tout</button>
+                    <button class="update">Modifier</button>
+                    <button class="other">Total</button>
+                </span>
+                <div class="addForm" id="form" action="" method="post" onsubmit="return false;">
+
+                </div>
+                <div class="removeForm">
+                    <span class="numero">
+                        <label for="numero" id="unik">Non défini</label>
+                        <input class="fields delKey" id="numero" name="numero" type="text">
+                    </span>
+                    <span class="send">
+                        <input id="send" class="del" name="submit"type="submit" value="Supprimer">
+                    </span>
+                </div>
+                <div class="updateForm0">
+                    <span class="numero">
+                        <label for="numero" id="unik2">Non défini</label>
+                        <input class="fields getKey" id="numero" name="numero" type="text">
+                    </span>
+                    <span class="send">
+                        <input id="send" class="get" name="submit"type="submit" value="Continue">
+                    </span>
+                </div>
+                <div class="updateForm1">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
 </body>
 </html>

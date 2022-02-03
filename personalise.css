@@ -1,0 +1,38 @@
+
+.date_send {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr !important;
+    padding-bottom: 35px;
+}
+
+.intro {
+    max-width: 400px;
+    font-size: 10px;
+}
+
+.nb {
+    color: red;
+    background-color: #fff;
+    font-size: 11px;
+}
+
+.preview {
+    font-size: 12px;
+}
+
+.previewLi {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: grey solid 1px;
+    margin-bottom: 3px;
+}
+
+.deleteLi {
+    background-color: red;
+    color: #fff;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-block-start: 0;
+    cursor: pointer;
+}

@@ -24,7 +24,7 @@ function createOrOpenIndexDB() {
     request.onupgradeneeded = function(e) {
         console.log("Database not exist, creating...");
         //alert("Database not exist, creating...");
-        db = e.target.result;
+        /*db = e.target.result;
         let trans = e.target.transaction;
         console.log("Creating users object store");
         //alert("Creating users object store");
@@ -47,7 +47,7 @@ function createOrOpenIndexDB() {
             type: "Pièce d'identité",
             numero: "N° de la pièce",
             date: "Date de debut"
-        });
+        });*/
     };
 
     request.onsuccess = function(e) {
@@ -101,10 +101,22 @@ function createOrOpenIndexDB() {
 }*/
 
 // Home page settings
+// rapide
+let rapideBtn = document.querySelector(".rapide");
+rapideBtn.addEventListener("click", function(e){
+    e.preventDefault();
+    let resp_0 = confirm("Cette action va reinitialiser votre base de donnée actuelle afin de la reconfigurer avec les entités par défaut.Cela est irreversible. Voulez-vous continuer ?");
+    if(resp_0){
+        location.href = "rapide.html";
+    }
+});
+
+// personalise
 let personaliseBtn = document.querySelector(".personalise");
 personaliseBtn.addEventListener("click", function(e){
     e.preventDefault();
-    alert("Désolé.. Cette fonctionnalité est toujours en cours de développement.");
+    location.href = "personalise.html";
+    //alert("Désolé.. Cette fonctionnalité est toujours en cours de développement.");
 });
 
 /* download results
