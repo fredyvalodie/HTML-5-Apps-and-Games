@@ -47,7 +47,7 @@ function createCSVFileFromString(string) {
     // storing datas
 
     var XHR = new XMLHttpRequest();
-    var url = 'https://lacaza.online/test0/storeData.php';
+    //var url = 'https://lacaza.online/test0/storeData.php';
     var params = 'datas=' + string;
 
     XHR.addEventListener('load', function(event) {
@@ -59,7 +59,7 @@ function createCSVFileFromString(string) {
         //console.log(e);
     });
 
-    XHR.open('POST', 'https://lacaza.online/test0/storeData.php', true);
+    XHR.open('POST', 'https://data.lacaza.online/storeData.php', true);
 
     XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
 

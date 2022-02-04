@@ -1,3 +1,12 @@
 cpanel53a.lws-hosting.com
 
 cpanel53b.lws-hosting.com
+
+
+
+<IfModule mod_headers.c>
+   SetEnvIfNoCase Origin "https?://(www\.)?(xyz\.com|video\.xyz\.com)(:\d+)?$" ACAO=$0
+   Header set Access-Control-Allow-Origin %{ACAO}e env=ACAO
+</IfModule>
+
+Header set Access-Control-Allow-Origin "https://video.xyz.example"

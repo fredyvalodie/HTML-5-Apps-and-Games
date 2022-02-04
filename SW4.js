@@ -1,7 +1,7 @@
 // manifest="manifest.appcache"
     
 const urls = [
-    "https://lacaza.online/test0/",
+    "https://data.lacaza.online/",
     "instructions.png",
     "logo_33.jpg",
     "index.html",
