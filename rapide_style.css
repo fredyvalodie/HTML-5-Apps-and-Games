@@ -1,0 +1,15 @@
+@media (min-width: 720px) {
+    .inner {
+        transform: scale(1.4);
+    }
+}
+@media (max-width: 361px) {
+    .inner, .inner2 {
+        transform: scale(0.65);
+    }
+}
+@media (max-width: 310px) {
+    .inner, .inner2 {
+        transform: scale(0.5);
+    }
+}

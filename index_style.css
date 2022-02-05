@@ -1,0 +1,26 @@
+@media (max-width: 1024px) {
+    .inner {
+        transform: scale(1.4);
+    }
+}
+
+@media (max-width: 720px) {
+    .inner {
+        transform: scale(1.3);
+    }
+}
+@media (max-width: 380px) {
+    .inner, .inner2 {
+        transform: scale(1.15);
+    }
+}
+@media (max-width: 361px) {
+    .inner, .inner2 {
+        transform: scale(1.05);
+    }
+}
+@media (max-width: 310px) {
+    .inner, .inner2 {
+        transform: scale(0.85);
+    }
+}
