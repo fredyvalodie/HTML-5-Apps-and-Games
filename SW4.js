@@ -3,6 +3,7 @@
 const urls = [
     "https://data.lacaza.online/",
     "instructions.png",
+    "whatsapp.png",
     "logo_33.jpg",
     "index.html",
     "rapide.html",

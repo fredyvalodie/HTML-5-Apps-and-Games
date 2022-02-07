@@ -25,6 +25,22 @@ form {
     width: 100%;
 }
 
+img.logo {
+    width: 65px;
+}
+
+.myLogo {
+    width: 75%;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+
+span#title {
+    font-size: 20px;
+    margin-left: -15px;
+    padding-top: 5px;
+}
+
 #closeBtn {
     position: absolute;
     top: 0;
@@ -46,7 +62,29 @@ form {
     text-align: center;
     display: block;
     background-color: #d9d9d9;
-    font-size: 14px;
+    font-size: 16px;
+    padding-bottom: 4px;
+    padding-top: 3px;
+}
+
+#footer .span {
+    margin-top: 0;
+}
+
+img.icons {
+    width: 25px;
+    padding: 0;
+    margin-bottom: -6px;
+}
+
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: left;
+    display: block;
+    background-color: transparent;
 }
 
 .start {
