@@ -227,6 +227,11 @@ input#send:hover, input#getCords:hover{
     .inner {
         transform: scale(1.10);
     }
+
+    input.fields:focus{
+        transform: scale(1.1, 1.5);
+    }
+
 }
 @media (max-width: 630px) {
     .inner {

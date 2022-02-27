@@ -11,7 +11,7 @@ const urls = [
     "personalise_style.css",
     "index_style.css",
     "rapide_style.css",
-    "export.js",
+    "index.js",
     "rapide.js",
     "personalise.css",
     "personalise.html",

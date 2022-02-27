@@ -124,8 +124,6 @@ resultsButton.addEventListener("click", function(e){
         loadAndStartDownloadingData().catch(console.warn);
         imgContainer.style.width = "65%";
         imgContainer.style.height = "auto";
-    }else{
-        alert("Erreur internet. Veuillez vous connectez et réesayer.");
     }
 });
 
